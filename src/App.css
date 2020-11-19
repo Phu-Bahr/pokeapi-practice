@@ -1,38 +1,151 @@
-.App {
-  text-align: center;
+:root {
+  --color-primary: skyblue;
+  --color-primary-dark: blue;
+  --color-secondary: lightcoral;
+  --color-secondary-dark: red;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  background-color: whitesmoke;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 3rem;
+}
+
+.card-section {
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5rem;
   min-height: 100vh;
+  align-items: center;
+}
+
+.card {
+  /* max-height: 45rem; */
+  width: 28rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-secondary);
+  transition: all 0.3s;
+  height: auto;
+  min-height: 50vh;
+}
+
+.card:hover {
+  background-color: whitesmoke;
+  box-shadow: 0 1rem 2em rgba(0, 0, 0, 0.5);
+  transform: translateY(-0.5rem);
+}
+
+.card:hover .card__img {
+  transform: scale(1.5);
+  background-color: transparent;
+}
+
+.card__img {
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  transition: all 0.2s;
+}
+
+.card__name {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.card__abilities--header {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.card__abilities {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 1rem;
+}
+
+.card__abilities--ability {
+  list-style: none;
+  background-color: var(--color-secondary-dark);
+  border-radius: 1.5rem;
+  padding: 0.3rem 1.3rem;
+  margin: 0.5rem;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.card__abilities--ability:not(:last-child) {
+  margin-right: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card__info {
+  width: 100%;
+  padding: 1rem;
+  color: white;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__info--button,
+.card__info--button:active,
+.card__info--button:visited {
+  width: 100%;
+  background-color: lightsteelblue;
+  border-radius: 1.5rem;
+  font-size: 1.6rem;
+  padding-top: 0.5rem;
+  text-decoration: none;
+  outline: none;
+}
+
+.card__info--details {
+  padding-top: 1.5rem;
+  color: black;
+}
+
+.filter__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  font-size: 3rem;
+}
+
+.filter__input {
+  font-size: inherit;
+  padding: 1rem;
 }
