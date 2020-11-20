@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PokemonInfo from "./Info";
 
 export default function Card({ data, filtered, setFiltered, clearSearch }) {
-  console.log("data", data);
+  console.log(data);
 
   return (
     <section className="card-section">
@@ -36,16 +36,15 @@ export default function Card({ data, filtered, setFiltered, clearSearch }) {
               100}{" "}
             lbs
           </div>
+          <PokemonInfo infoUrl={element.data.species.url} />
           <h2 className="card__abilities--header">Abilities:</h2>
           <div className="card__abilities">
-            {element.data.abilities.map(element => (
-              <li className="card__abilities--ability">
-                {element.ability.name}
+            {element.data.abilities.map((item, index) => (
+              <li className="card__abilities--ability" key={index}>
+                {item.ability.name}
               </li>
             ))}
           </div>
-
-          <PokemonInfo infoUrl={element.data.species.url} />
         </div>
       ))}
       {data == "" ? (
