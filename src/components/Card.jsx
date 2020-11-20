@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PokemonInfo from "./Info";
 
-export default function Card({ data, filtered, setFiltered, clearSearch }) {
-  console.log(data);
-
+export default function Card({ data, filtered, setFiltered }) {
   return (
     <section className="card-section">
       <div className="filter__box">
