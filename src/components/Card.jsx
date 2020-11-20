@@ -2,6 +2,8 @@ import React from "react";
 import PokemonInfo from "./Info";
 
 export default function Card({ data, filtered, setFiltered }) {
+  console.log(data);
+
   return (
     <section className="card-section">
       <div className="filter__box">
@@ -44,7 +46,7 @@ export default function Card({ data, filtered, setFiltered }) {
         </div>
       ))}
 
-      {data === "" && (
+      {data == "" && (
         <div
           className="card"
           onClick={() => setFiltered("")}
