@@ -10,12 +10,12 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=30"
+        "https://pokeapi.co/api/v2/pokemon?limit=151"
       );
       const data = await response.json();
       const { results: pokemonList } = data;
 
-      //pokeList has all 50pokemon. i need to fetch each pokemon data and set it to state.
+      //why does it save another 150 everytime I save to file? Why the lag on the 3rd fetch in info?
       const pokeData = pokemonList.forEach(element => {
         async function fetchPoke() {
           const response = await fetch(element.url);
@@ -31,22 +31,22 @@ function App() {
 
   function search(data) {
     return data.filter(
-      element => element.data.name.toLowerCase().indexOf(filtered) > -1
+      element =>
+        element.data.name.toLowerCase().indexOf(filtered.toLowerCase()) > -1
     );
   }
 
   return (
     <div className="App">
-      <div className="filter__box">
-        <input
-          type="text"
-          value={filtered}
-          onChange={e => setFiltered(e.target.value.toLowerCase())}
-          className="filter__input"
-          placeholder="Search..."
+      {loading ? (
+        <div>...loading</div>
+      ) : (
+        <Card
+          data={search(newData)}
+          filtered={filtered}
+          setFiltered={setFiltered}
         />
-      </div>
-      {loading ? <div>...loading</div> : <Card data={search(newData)} />}
+      )}
     </div>
   );
 }
