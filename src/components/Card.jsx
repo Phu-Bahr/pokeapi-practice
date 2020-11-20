@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PokemonInfo from "./Info";
 
 export default function Card({ data, filtered, setFiltered }) {
@@ -17,27 +17,25 @@ export default function Card({ data, filtered, setFiltered }) {
       {data.map(element => (
         <div key={element.id} className="card">
           <img
-            src={element.data.sprites.front_default}
-            alt={`photo of` + element.data.name}
+            src={element.sprites.front_default}
+            alt={`photo of` + element.name}
             className="card__img"
           />
-          <h1 className="card__name">{element.data.name}</h1>
+          <h1 className="card__name">{element.name}</h1>
           <div className="card__height">
             Height:{" "}
-            {Math.round((element.data.height / 3.048 + Number.EPSILON) * 100) /
-              100}{" "}
+            {Math.round((element.height / 3.048 + Number.EPSILON) * 100) / 100}{" "}
             ft
           </div>
           <div className="card__weight">
             Weight:{" "}
-            {Math.round((element.data.weight / 4.536 + Number.EPSILON) * 100) /
-              100}{" "}
+            {Math.round((element.weight / 4.536 + Number.EPSILON) * 100) / 100}{" "}
             lbs
           </div>
-          <PokemonInfo infoUrl={element.data.species.url} />
+          <PokemonInfo infoUrl={element.species.url} />
           <h2 className="card__abilities--header">Abilities:</h2>
           <div className="card__abilities">
-            {element.data.abilities.map((item, index) => (
+            {element.abilities.map((item, index) => (
               <li className="card__abilities--ability" key={index}>
                 {item.ability.name}
               </li>
@@ -45,7 +43,8 @@ export default function Card({ data, filtered, setFiltered }) {
           </div>
         </div>
       ))}
-      {data == "" ? (
+
+      {data === "" && (
         <div
           className="card"
           onClick={() => setFiltered("")}
@@ -53,7 +52,7 @@ export default function Card({ data, filtered, setFiltered }) {
         >
           No Results...Clear Search
         </div>
-      ) : null}
+      )}
     </section>
   );
 }

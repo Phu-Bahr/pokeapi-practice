@@ -3,17 +3,26 @@ import React, { useState, useEffect } from "react";
 export default function PokemonInfo({ infoUrl }) {
   const [speciesInfo, setSpeciesInfo] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchInfo() {
-      const response = await fetch(infoUrl);
-      const data = await response.json();
-      setSpeciesInfo(speciesInfo => [...speciesInfo, { data }]);
+      //begin
+      setLoading(true);
+      try {
+        const response = await fetch(infoUrl);
+        const data = await response.json();
+        setSpeciesInfo(speciesInfo => [...speciesInfo, data]);
+        //success
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        //failure
+        setLoading(false);
+      }
     }
     fetchInfo();
-    setLoading(false);
-  }, []);
+  }, [infoUrl]);
 
   return (
     <section className="card__info">
@@ -22,6 +31,7 @@ export default function PokemonInfo({ infoUrl }) {
       </button>
 
       {loading && toggle ? (
+        //debugger
         <div className="card__info--details-show">...loading</div>
       ) : (
         <div
@@ -29,8 +39,7 @@ export default function PokemonInfo({ infoUrl }) {
             toggle ? "card__info--details-show" : "card__info--details"
           }
         >
-          {speciesInfo &&
-            speciesInfo[0].data.flavor_text_entries[0].flavor_text}
+          {speciesInfo && speciesInfo[0].flavor_text_entries[0].flavor_text}
         </div>
       )}
     </section>
