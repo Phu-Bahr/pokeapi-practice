@@ -66,22 +66,8 @@ body {
   align-content: center;
 }
 
-.filter__box {
-  position: absolute;
-  padding-bottom: 2rem;
-  font-size: 3rem;
-  top: 5rem;
-}
-
-.filter__input {
-  font-size: inherit;
-  padding: 1rem;
-  position: -webkit-sticky;
-  position: sticky;
-}
-
 .card {
-  width: 30rem;
+  width: 25rem;
   padding: 2rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -117,6 +103,21 @@ body {
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
+}
+
+.filter__box {
+  display: block;
+  position: absolute;
+  padding-bottom: 2rem;
+  font-size: 3rem;
+  top: 5rem;
+}
+
+.filter__input {
+  font-size: inherit;
+  padding: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 @-webkit-keyframes floating {
@@ -258,6 +259,20 @@ body {
   transform-origin: -100%;
 }
 
+.card__info--comment {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment__input {
+  font-size: inherit;
+  padding: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 .card__abilities--header {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -287,4 +302,32 @@ body {
 }
 .card__abilities--ability:not(:last-child) {
   margin-right: 1.5rem;
+}
+
+@media only screen and (max-width: 50em) {
+  body {
+    margin: 0;
+  }
+
+  html {
+    font-size: 50%;
+  }
+
+  .card-section {
+    padding-top: 14rem;
+  }
+
+  .card {
+    width: 40vw;
+  }
+
+  .comment__input {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .card {
+    width: 90vw;
+  }
 }

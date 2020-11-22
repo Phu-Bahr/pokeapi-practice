@@ -2,13 +2,14 @@ import React from "react";
 import PokemonInfo from "./Info";
 
 export default function Card({ data, filtered, setFiltered }) {
-  console.log(data);
-
   return (
     <section className="card-section">
       <div className="filter__box">
+        <label htmlFor="filter"></label>
         <input
           type="text"
+          id="filter"
+          name="filter"
           value={filtered}
           onChange={e => setFiltered(e.target.value)}
           className="filter__input"

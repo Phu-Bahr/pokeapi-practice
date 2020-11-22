@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 
 export default function PokemonInfo({ infoUrl }) {
   const [speciesInfo, setSpeciesInfo] = useState("");
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     async function fetchInfo() {
@@ -34,13 +35,27 @@ export default function PokemonInfo({ infoUrl }) {
         //debugger
         <div className="card__info--details-show">...loading</div>
       ) : (
-        <div
-          className={
-            toggle ? "card__info--details-show" : "card__info--details"
-          }
-        >
-          {speciesInfo && speciesInfo[0].flavor_text_entries[0].flavor_text}
-        </div>
+        <Fragment>
+          <div
+            className={
+              toggle ? "card__info--details-show" : "card__info--details"
+            }
+          >
+            <div className="card__info--detail">
+              {speciesInfo && speciesInfo[0].flavor_text_entries[0].flavor_text}
+            </div>
+            <div className="card__info--comment">
+              <input
+                type="text"
+                name="comment"
+                value={comment}
+                onChange={e => setComment(e.target.value)}
+                className="comment__input"
+                placeholder="Pro Tip"
+              />
+            </div>
+          </div>
+        </Fragment>
       )}
     </section>
   );
