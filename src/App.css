@@ -67,7 +67,7 @@ body {
 }
 
 .card {
-  width: 25rem;
+  width: 29.5rem;
   padding: 2rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -314,11 +314,12 @@ body {
   }
 
   .card-section {
+    padding: 0rem;
     padding-top: 14rem;
   }
 
   .card {
-    width: 40vw;
+    width: 29vw;
   }
 
   .comment__input {
@@ -328,6 +329,6 @@ body {
 
 @media only screen and (max-width: 37.5em) {
   .card {
-    width: 90vw;
+    width: 80vw;
   }
 }

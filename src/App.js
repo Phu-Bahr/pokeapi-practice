@@ -37,8 +37,8 @@ function App() {
   }, []);
 
   function search(data) {
-    return data.filter(
-      element => element.name.toLowerCase().indexOf(filtered.toLowerCase()) > -1
+    return data.filter(element =>
+      element.name.toLowerCase().includes(filtered.toLowerCase())
     );
   }
 
